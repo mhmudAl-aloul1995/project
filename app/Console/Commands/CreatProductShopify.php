@@ -53,13 +53,15 @@ class CreatProductShopify extends Command
             $ch = curl_init($url);
 
             curl_setopt($ch, CURLOPT_POSTFIELDS, $encode_product);
-
             curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
-
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
             $result = curl_exec($ch);
-
+            if($result === false)
+            {
+                $this->info(curl_error($ch));
+                return false;
+            }
             $decode_result = json_decode($result)->product->id;
 
             curl_close($ch);

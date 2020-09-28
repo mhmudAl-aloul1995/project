@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "53daeb88b8042f9c5b3751d70469d012",
+    "content-hash": "642defd906649bc920545dc88f592a1a",
     "packages": [
         {
             "name": "box/spout",
@@ -1302,6 +1302,69 @@
                 "php"
             ],
             "time": "2018-07-15T17:25:16+00:00"
+        },
+        {
+            "name": "obiefy/api-response",
+            "version": "v0.9.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/obiefy/api-response.git",
+                "reference": "aa95b940e67e6e0dbfb6ae2ce478a3bf26ddc80e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/obiefy/api-response/zipball/aa95b940e67e6e0dbfb6ae2ce478a3bf26ddc80e",
+                "reference": "aa95b940e67e6e0dbfb6ae2ce478a3bf26ddc80e",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^7.0|^6.0|^5.5",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Obiefy\\API\\ApiResponseServiceProvider"
+                    ],
+                    "aliases": {
+                        "API": "Obiefy\\API\\Facades\\API"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Obiefy\\API\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Obiefy",
+                    "email": "obayhamed@gmail.com",
+                    "homepage": "http://obay-dev.com",
+                    "role": "Creator & Maintainer"
+                }
+            ],
+            "description": "Simple Laravel package to return Json responses.",
+            "homepage": "https://github.com/obiefy/api-response",
+            "keywords": [
+                "RESTful API",
+                "api",
+                "json",
+                "laravel",
+                "php",
+                "response",
+                "restful"
+            ],
+            "time": "2020-05-14T03:53:10+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -4449,6 +4512,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2018-02-01T13:16:43+00:00"
         },
         {

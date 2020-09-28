@@ -45,9 +45,17 @@ class GetProductShopify extends Command
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type:application/json'));
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
         $result = curl_exec($ch);
+
+        if($result === false)
+        {
+            $this->info(curl_error($ch));
+            return false;
+        }
+
         $decode_result = json_decode($result);
-        curl_close($ch);
+
 
         (new FastExcel($decode_result->products))->export('products.csv', function ($product) {
             if (is_array($product->tags)) {
@@ -60,5 +68,11 @@ class GetProductShopify extends Command
                 'Tags' => $product->tags,
             ];
         });
+
+        $this->info('recreate the CSV file by ready the data coming thru shopify API');
+
+        curl_close($ch);
+
+
     }
 }
