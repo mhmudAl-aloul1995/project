@@ -62,12 +62,18 @@ class CreatProductShopify extends Command
                 $this->info(curl_error($ch));
                 return false;
             }
+
+            
             $decode_result = json_decode($result)->product->id;
 
+            if ($decode_result)
+            {
+                $this->info('Successfully created product in shopify');
+
+            }
             curl_close($ch);
 
         });
-        $this->info('Successfully created product in shopify');
 
     }
 }
