@@ -41,8 +41,11 @@ class researchController extends Controller
     {
         $data = $request->all();
 
-        $users = Research::query()->with('category')->select('researches.*');
+        $users = Research::query();
 
+        if (Auth::id() != 1) {
+            $users->where('user_id', Auth::id());
+        }
         return Datatables::of($users)
             ->editColumn('res_link', function ($ctr) {
 
@@ -86,10 +89,12 @@ class researchController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+
         unset($data['id']);
         $data['user_id'] = Auth::id();
         $get_last_version = Version::latest()->first()['id'];
-        if (!$get_last_version){
+        if (!$get_last_version) {
             return response()->json([
                 'success' => FALSE,
                 'message' => "لا يوجد إصدار لإضافة البحث عليه"
@@ -97,13 +102,22 @@ class researchController extends Controller
             ]);
         }
         if ($request->file()) {
+            if (!$request->validate([
+                "res_link" => "required|mimetypes:application/pdf|max:10000"
+            ])) {
+                return response()->json([
+                    'success' => FALSE,
+                    'message' => "يجب أن يكون الملف pdf"
+
+                ]);
+            }
             $fileName = time() . '_' . $request->res_link->getClientOriginalName();
             $filePath = $request->file('res_link')->storeAs('researches', $fileName);
             $data['res_link'] = '/storage/app/' . $filePath;
 
         }
 
-        $data['version_id']=$get_last_version;
+        $data['version_id'] = $get_last_version;
         $research = Research::create($data);
 
         if (!$research) {
@@ -127,14 +141,24 @@ class researchController extends Controller
 
 
         $research = research::find($data['id']);
-        $research->update($data);
-
         if ($request->file()) {
+            if (!$request->validate([
+                "res_link" => "required|mimetypes:application/pdf|max:10000"
+            ])) {
+                return response()->json([
+                    'success' => FALSE,
+                    'message' => "يجب أن يكون الملف pdf"
+
+                ]);
+            }
             $fileName = time() . '_' . $request->res_link->getClientOriginalName();
             $filePath = $request->file('res_link')->storeAs('researches', $fileName);
             $data['res_link'] = '/storage/app/' . $filePath;
 
         }
+
+        $research->update($data);
+
 
         if (!$research) {
             return response()->json([
@@ -157,6 +181,7 @@ class researchController extends Controller
         if ($research) {
             return response()->json([
                 'message' => 'تمت العملية بنجاح',
+                'success' => TRUE,
             ]);
         }
 

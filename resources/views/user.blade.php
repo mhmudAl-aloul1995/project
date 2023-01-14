@@ -49,7 +49,7 @@
                                                 <div class="col-md-8">
                                                     <select required style="width:100%"
                                                             data-placeholder="الدور"
-                                                            id="category_id" name="category_id"
+                                                            id="role_id" name="role_id"
                                                             class="form-control select2  ">
                                                         <option value=""></option>
 
@@ -98,10 +98,10 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group form-md-line-input">
-                                            <label for="phone" class="col-md-4  control-label">رقم الجوال
+                                            <label for="mobile" class="col-md-4  control-label">رقم الجوال
                                             </label>
                                             <div class="col-md-8">
-                                                <input required="" type="text" name="phone" value=""
+                                                <input required="" type="text" name="mobile" value=""
                                                        class="form-control" placeholder="رقم الجوال">
                                                 <div class="form-control-focus"></div>
                                             </div>
@@ -239,7 +239,7 @@
                 {className: 'text-center', data: 'name', name: 'name', searchable: true},
                 {className: 'text-center', data: 'role_id', name: 'role_id', searchable: true},
                 {className: 'text-center', data: 'email', name: 'email', searchable: true},
-                {className: 'text-center', data: 'phone', name: 'phone', searchable: true},
+                {className: 'text-center', data: 'mobile', name: 'mobile', searchable: true},
                 {className: 'text-center', data: 'address', name: 'address', searchable: true},
                 {className: 'text-left', data: 'action', name: 'action', searchable: false},
             ],

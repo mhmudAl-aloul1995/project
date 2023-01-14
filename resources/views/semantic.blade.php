@@ -311,7 +311,15 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
             <ul class="page-sidebar-menu  page-header-fixed page-sidebar-menu-hover-submenu " data-keep-expanded="false"
                 data-auto-scroll="true" data-slide-speed="200">
+                <li class="nav-item start ">
+                    <a href="{{url('research')}}" class="nav-link nav-toggle">
+                        <i class="icon-home"></i>
+                        <span class="title">الأبحاث</span>
+                        <span class="arrow"></span>
+                    </a>
+                </li>
 
+                @if(Auth::id()==1)
                 <li class="nav-item start ">
                     <a  href="{{url('user')}}" class="nav-link nav-toggle">
                         <i class="icon-home"></i>
@@ -340,13 +348,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="arrow"></span>
                     </a>
                 </li>
-                <li class="nav-item start ">
-                    <a href="{{url('research')}}" class="nav-link nav-toggle">
-                        <i class="icon-home"></i>
-                        <span class="title">الأبحاث</span>
-                        <span class="arrow"></span>
-                    </a>
-                </li>
+
                 <li class="nav-item start ">
                     <a href="{{url('category')}}" class="nav-link nav-toggle">
                         <i class="icon-home"></i>
@@ -354,7 +356,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <span class="arrow"></span>
                     </a>
                 </li>
-
+                @endif
             </ul>
             <!-- END SIDEBAR MENU -->
         </div>
@@ -1179,8 +1181,9 @@ License: You must have a valid license purchased only from themeforest(the above
 
 
                         });
-                        $('#' + formName + 'Form').bootstrapValidator('enableFieldValidators', 'res_link', false);
-
+                        if(formName=="research") {
+                            $('#' + formName + 'Form').bootstrapValidator('enableFieldValidators', 'res_link', false);
+                        }
                         $('#' + formName + 'Modal').modal('show', {backdrop: 'static'});
                     }
                 }).fail(function () {

@@ -13,6 +13,8 @@ use Yajra\Datatables\Enginges\EloquentEngine;
 use Illuminate\Http\Request;
 use Mail;
 use App\Mail\JournalMail;
+use Illuminate\Support\Facades\Hash;
+use Auth;
 class signupController extends Controller
 {
 
@@ -24,38 +26,48 @@ class signupController extends Controller
         return View::make('main/signup');
 
     }
-    public function registration(Request $request)
+
+    public function store(Request $request)
     {
         /*$name = 'Journal Gaza University';
         $password = 'Journal Gaza University';
         dd(Mail::to('mhmudaloul@gmail.com')->send(new JournalMail ($name,$password)));*/
-        dd($request->all());
+        $data = $request->all();
+
+
         $request->validate([
             'cn_title' => 'required',
             'name' => 'required',
             'contact_type' => 'required',
             'sb_code' => 'required',
-            'phone' => 'required',
-            'phone' => 'required',
-            'phone' => 'required',
-            'name' => 'required',
+            'speciality' => 'required',
+            'mobile' => 'required',
+            'fax' => 'required',
+            'zip_code' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
+            'city' => 'required',
         ]);
 
-        $data = $request->all();
-        $check = $this->create($data);
+        $data['role_id'] = 1;
+        $data['password'] = Hash::make($data['name']);
+        $data['email'] = $data['email_1'];
+        unset($data['email_1']);
 
-        return redirect("research");
-    }
+        $user = User::create($data);
 
-    public function create(array $data)
-    {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['name'])
-        ]);
+        if (!$user) {
+            return response(['success' => false]);
+
+        }
+
+
+
+        if (Auth::attempt(['email'=>$data['email'],'password'=>$data['name']])) {
+
+            return response(['success' => true, 'url' => url('research')]);
+        }
+
+
     }
 
 

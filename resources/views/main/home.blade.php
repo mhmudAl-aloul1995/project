@@ -9,16 +9,17 @@
             <div class="col-md-3 ">
                 <!-- Cover -->
                 <div class="item-box nomargin-top">
-                    <a href="javascript:loadModal('المجلة العلمية للدراسات التجارية والبيئية', 'https://jces.journals.ekb.eg/data/jces/coversheet/cover_ar.jpg')">
-                        <img src="https://jces.journals.ekb.eg/data/jces/coversheet/cover_ar.jpg"
-                             alt="المجلة العلمية للدراسات التجارية والبيئية"
+                    <a href="javascript:loadModal('مجلة جامعة غزة للأبحاث والدراسات', '{{url('public/logo.jpeg')}}')">
+                        <img src="{{url('public/logo.jpeg')}}"
+                             alt="مجلة جامعة غزة للأبحاث والدراسات"
                              style="width: 100%;">
                     </a>
                 </div>
+{{--
                 <div class="margin-top-10">
                     <ul class="list-group list-group-bordered list-group-noicon">
                         <li class="list-group-item"><a
-                                href="https://jces.journals.ekb.eg/?_action=press&amp;issue=-1&amp;_is= المقالات الجاهزة للنشر">
+                                href="https://jces.journals.ekb.eg/?_action=press&amp;issue=-1&amp;_is= المقالات يناير 2023 ">
                                 المقالات الجاهزة
                                 للنشر</a></li>
                         <li class="list-group-item"><a
@@ -27,6 +28,7 @@
                         </li>
                     </ul>
                 </div>
+--}}
                 <div style=" border-color:  #4295c9;" class="panel panel-default my_panel-default ">
                     <div style=" background-color:  #4295c9;" class="panel-heading">
                         <h3 class="panel-title">أرشيف الدورية</h3>
@@ -52,7 +54,7 @@
                                         @foreach($value->versions as $value1)
 
                                             <div class="issue_dv">
-                                                <a style=" color: #4295c9; "  href="{{url('category/3/'.$value1->id)}}">
+                                                <a style=" color: #4295c9; " href="{{url('category/3/'.$value1->id)}}">
                                                     <i class="fa fa-file-text-o" aria-hidden="true"></i>
                                                     العدد {{$value1->vr_no}}</a>
                                             </div>
@@ -149,7 +151,7 @@
                 <div>
                     <b class="page-header  margin-top-50 " style="">
                         <i class="et-layers"></i> <span
-                            class=""> العدد الحالي:  <span>المجلد {{$last_folder}}، العدد {{$last_version}}، يوليو 2022</span>&nbsp;<a
+                            class=""> العدد الحالي:  <span>المجلد {{$last_folder}}، العدد {{$last_version}}، يناير 2023 </span>&nbsp;<a
                                 href="https://jces.journals.ekb.eg/?_action=xml&amp;issue=37369" title="XML"
                                 target="_blank"> <i
                                     class="fa fa-file-code-o fa-md" aria-hidden="true"></i></a></span>
@@ -165,7 +167,8 @@
                                 @foreach($category as $value)
                                     <div>
                                         <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                        <a href="{{url('category').'/1/'.$value->id}}" class="tag_a"> {{$value->ctg_name}}
+                                        <a href="{{url('category').'/1/'.$value->id}}"
+                                           class="tag_a"> {{$value->ctg_name}}
                                             <span class="badge">{{$value->researches_count}}</span>
                                         </a>
                                     </div>
@@ -219,68 +222,42 @@
                     <div class="panel-body" style="padding: 15px;">
                         <strong><i class="fa fa-cube"></i> الناشر</strong><br/>
                         <div style="margin-right:20px">
-                            جامعة قناة السويس (فرع الأسماعيلية)، مکتبة کلية التجارة
+                            جامعة غزة
                         </div>
                         <hr>
                         <strong class="block margin-top-10"><i class="fa fa-cube"></i> رئيس مجلس ادارة المجلة</strong>
                         <div style="margin-right:20px">
-                            <a class="edbb_59 block pub_owner tag_a" href="journal/editorial.board#edb19053">أ.د/ سلوى
-                                السعيد فراج</a>
+                            <a class="edbb_59 block pub_owner tag_a" href="journal/editorial.board#edb19053">{{$role_2}}
+                            </a>
                         </div>
                         <strong class="block margin-top-10"><i class="fa fa-cube"></i> رئيس التحرير</strong>
                         <div style="margin-right:20px">
-                            <a class="edbb_2 block pub_owner tag_a" href="journal/editorial.board#edb3684">أ.د/ أشرف
-                                احمد محمد غالى</a>
+                            <a class="edbb_2 block pub_owner tag_a" href="journal/editorial.board#edb3684">
+                                {{$role_3}}  </a>
                         </div>
                         <strong class="block margin-top-10"><i class="fa fa-cube"></i> مدير التحرير</strong>
                         <div style="margin-right:20px">
-                            <a class="edbb_27 block pub_owner tag_a" href="journal/editorial.board#edb3686">أ.م.د/ رحاب
-                                كمال محمود</a>
+                            <a class="edbb_27 block pub_owner tag_a" href="journal/editorial.board#edb3686">{{$role_4}}
+                            </a>
                         </div>
                         <strong class="block margin-top-10"><i class="fa fa-cube"></i> هيئة التحرير</strong>
                         <div style="margin-right:20px">
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3687">ا.د سامی
-                                معروف عبد الرحیم</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3688">ا.د یسری امین
-                                سامی </a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3689">ا.د مصطفى علی
-                                الباز</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3690">ا.د محمد بکر
-                                عربی</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3691">ا.د سید جاد
-                                الرب</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3692">ا.د عبد
-                                المنعم رشاد</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3693">ا.د سعید
-                                شعبان</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3694">ا.د صفاء عبد
-                                الدایم</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3695">ا.د فؤاد
-                                مندور </a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3696">ا.د أحمد
-                                زردق </a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3697">ا.د عبد
-                                الخبیر محمود عطا</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3698">ا.د صبری أحمد
-                                أبوزید</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3699">ا.د نجوى
-                                خشبة</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3700">ا.د سید
-                                أبوضیف</a>
-                            <a class="edbb_5 block pub_owner tag_a" href="journal/editorial.board#edb3701">ا.د امانی
-                                خضیر</a>
+                            @foreach($role_5 as $value)
+                                <a class="edbb_5 block pub_owner tag_a"
+                                   href="{{url('browse_users').'/0'}}">{{$value->name}}</a>
+                            @endforeach
                         </div>
                         <hr>
                         <div class="row margin-bottom-10" id="dv_ju_frq"><strong class="col-md-7"><i
                                     class="fa fa-cube"></i> حجم الإصدار </strong>
-                            <div class="col-md-5">ربع سنوية</div>
+                            <div class="col-md-5">نصف سنوية</div>
                         </div>
-                        <div class="row"><strong class="col-md-7"><i class="fa fa-cube"></i> الترقيم الدولي الموحد
+                    {{--    <div class="row"><strong class="col-md-7"><i class="fa fa-cube"></i> الترقيم الدولي الموحد
                                 للطباعة </strong>
                             <div class="col-md-5" dir="ltr"><a href="https://portal.issn.org/resource/ISSN/2090-3782"
                                                                target="_blank">2090-3782</a></div>
                         </div>
-                    </div>
+                    --}}</div>
                 </div>
                 <div style=" border-color:  #4295c9;" class="panel panel-default my_panel-default ">
                     <div style=" background-color:  #4295c9;" class="panel-heading">
@@ -289,7 +266,7 @@
                     <div class="panel-body" style="padding: 15px;">
 
                         <div class="searchBox">
-                            <form action=".." method="get">
+                            <form action="{{url('search')}}" method="get">
                                 <input type="hidden" name="_action" value="article">
                                 <input type="text" class="form-control" name="keywords" placeholder="">
                                 <button type="submit" class="btn">
@@ -297,8 +274,8 @@
                                 </button>
                             </form>
                         </div>
-                        <div class="text-left"><small><a href="https://jces.journals.ekb.eg/?_action=advSearch"> بحث
-                                    متقدم</a></small></div>
+                       {{-- <div class="text-left"><small><a href="{{url('catgeory')}}/?_action=advSearch"> بحث
+                                    متقدم</a></small></div>--}}
                     </div>
                 </div>
             </div>

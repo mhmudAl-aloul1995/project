@@ -124,7 +124,7 @@
         </div>
     </div>
 
-    <div class="row">
+   {{-- <div class="row">
         <div class="col-md-12">
             <!-- BEGIN CONDENSED TABLE PORTLET-->
             <div class="portlet box green">
@@ -141,7 +141,7 @@
                 </div>
                 <div class="portlet-body collapse1">
                     <div style=" " class="row">
-                        {{--
+                        --}}{{--
                                                 <div class="col-md-4" id="date">
                                                     <div class="form-group form-md-line-input ">
                                                         <label class="col-md-4 control-label" for="dob_search">تاريخ الميلاد</label>
@@ -158,7 +158,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                        --}}
+                        --}}{{--
                         <input type="hidden" value="false" name="offer" id="offer">
 
                         <div class="col-md-4">
@@ -181,7 +181,7 @@
             </div>
             <!-- END CONDENSED TABLE PORTLET-->
         </div>
-    </div>
+    </div>--}}
     <div class="row">
         <div class="col-md-12">
             <div class="portlet box green">
@@ -212,7 +212,6 @@
                         <table class="table table-striped  table-hover" id="researchTable">
                             <thead>
                             <tr>
-                                <th> تصنيف البحث</th>
                                 <th>عنوان البحث</th>
                                 <th>البحث كامل</th>
                                 <th> إجراء</th>
@@ -265,7 +264,9 @@
                 },*/
             ],
             columns: [
+/*
                 {className: 'text-center', data: 'category.ctg_name', name: 'category.ctg_name', searchable: true},
+*/
                 {className: 'text-center', data: 'res_title', name: 'res_title', searchable: true},
                 {className: 'text-center', data: 'res_link', name: 'res_link', searchable: true},
                 {className: 'text-left', data: 'action', name: 'action', searchable: false},

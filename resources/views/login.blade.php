@@ -24,7 +24,7 @@ License: You must have a valid license purchased only from themeforest(the above
 
 <head>
     <meta charset="utf-8"/>
-    <title>Shine</title>
+    <title>Gaza University</title>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta content="width=device-width, initial-scale=1" name="viewport"/>
     <meta content="Preview page of Metronic Admin RTL Theme #2 for " name="description"/>
@@ -284,7 +284,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
 <!-- END LOGIN -->
 <!-- BEGIN COPYRIGHT -->
-<div class="copyright"> 2019 &copy;Shine</div>
+<div class="copyright"> 2023 &copy;Gaza University</div>
 <!-- END COPYRIGHT -->
 <!--[if lt IE 9]>
 <script src="assets/global/plugins/respond.min.js"></script>
@@ -388,7 +388,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         type: 'POST',
                         success: function (data) {
                             if (data.success) {
-                                location.href = "{{url('/user')}}"
+                                location.href = "{{url('/research')}}"
                             } else {
                                 showAlertMessage('alert-danger', ' نظام الدخول / ', data.message);
 

@@ -46,7 +46,7 @@
                                         <li class="atomic-item padding-3" style="display:block">
 
                                             <a class="atomic-title text-dark block size-14"
-                                               href="#">{{$user->name}}<strong>[{{$user->researches_count}}]</strong></a>
+                                               href="{{url('category').'/0'.'/'.$user->id}}">{{$user->name}}<strong>[{{$user->researches_count}}]</strong></a>
 
                                         </li>
 

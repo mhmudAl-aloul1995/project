@@ -5,20 +5,16 @@
     <div id="dv_main_cnt">
 
 
-
         <section class="no-box">
 
             <div class="heading-title heading-dotted">
                 <h3>
-                    التسجيل لأول مرة            </h3>
+                    التسجيل لأول مرة </h3>
             </div>
 
             <!--		<div class="heading-title heading-dotted">
                         <h3> التسجيل لأول مرة</h3>
                     </div>-->
-
-
-
 
 
             <div class="row">
@@ -28,10 +24,8 @@
 
                 </div>
 
-                <form class="nomargin sky-form validate" action="{{url('user')}}" method="post" name="frm_contact" enctype="multipart/form-data" non_ajax="1" novalidate="novalidate">
-                    <input type="hidden" name="contact_code" value="0">
-                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                    <input type="hidden" id="cm1" name="contact_method" value="1">
+                <form class="nomargin sky-form validate" action="{{url('signup')}}" method="post" id="signup" name="frm_contact"
+                      enctype="multipart/form-data" non_ajax="1" novalidate="novalidate">
 
 
                     <!-- REGISTER -->
@@ -53,7 +47,8 @@
                                             <label>اللقب <span class="requird"></span></label>
 
                                             <div class="fancy-form fancy-form-select">
-                                                <select name="cn_title" class="form-control radius-0 select2" tabindex="-1" style="display: none;">
+                                                <select name="cn_title" class="form-control radius-0 select2"
+                                                        tabindex="-1" style="display: none;">
                                                     <option value="" disabled="" selected="">-- حدد --</option>
                                                     <option value="1"> الدكتور</option>
                                                     <option value="2">السيد</option>
@@ -92,36 +87,23 @@
 
                                         <!-- First Name -->
                                         <div class="col-md-6 col-sm-6">
-                                            <label>الاسم  <span class="requird">*</span></label>
+                                            <label> الإسم كاملاً <span class="requird">*</span></label>
                                             <label class="input margin-bottom-10">
                                                 <i class="ico-append fa fa-user"></i>
-                                                <input type="text" name="first_name" value="" required="required">
+                                                <input type="text" name="name" value="" required="required">
                                             </label>
                                         </div>
-                                        <!-- /First Name -->
-
-                                        <!-- Middle Name -->
-                                        <div class="col-md-2 col-sm-2 hidden">
-                                            <label>الاسم الأوسط <span class="requird"></span></label>
-                                            <label class="input margin-bottom-10">
-                                                <input type="text" name="middle_initial" value="">
-                                            </label>
-                                        </div>
-                                        <!-- /Middle Name -->
-
-                                        <!-- Last Name -->
                                         <div class="col-md-6 col-sm-6">
-                                            <label>اسم العائلة  <span class="requird">*</span> </label>
+                                            <label> البريد الإلكتروني <span class="requird">*</span></label>
                                             <label class="input margin-bottom-10">
-                                                <i class="ico-append fa fa-user"></i>
-                                                <input type="text" name="last_name" value="" required="required">
+                                                <i class="ico-append fa fa-envelope"></i>
+                                                <input type="email" name="email_1" value=""
+                                                       required="required">
                                             </label>
                                         </div>
-                                        <!-- /Last Name -->
 
                                     </div>
                                 </div>
-
 
 
                                 <div class="row">
@@ -132,7 +114,8 @@
                                             <label>المستوى التعليمي <span class="requird">*</span></label>
 
                                             <div class="fancy-form fancy-form-select">
-                                                <select name="contact_type" class="form-control radius-0 select2" required="required" tabindex="-1" style="display: none;">
+                                                <select name="contact_type" class="form-control radius-0 select2"
+                                                        required="required" tabindex="-1" style="display: none;">
                                                     <option value="" disabled="" selected="">-- حدد --</option>
                                                     <option value="1"> دكتوراه</option>
                                                     <option value="7">طبیب</option>
@@ -152,10 +135,11 @@
                                             <label> الدرجة العلمية <span class="requird">*</span></label>
 
                                             <div class="fancy-form fancy-form-select">
-                                                <select name="degree" class="form-control radius-0 select2" required="required" tabindex="-1" style="display: none;">
+                                                <select name="degree" class="form-control radius-0 select2"
+                                                        required="required" tabindex="-1" style="display: none;">
                                                     <option value="" disabled="" selected="">-- حدد --</option>
-                                                    <option value="1">أستاذ </option>
-                                                    <option value="2">أستاذ  مشارك</option>
+                                                    <option value="1">أستاذ</option>
+                                                    <option value="2">أستاذ مشارك</option>
                                                     <option value="3">أستاذ مساعد</option>
                                                     <option value="4">مدرس</option>
                                                     <option value="5"> غير ذلك</option>
@@ -177,7 +161,8 @@
                                             <label> التخصص الدراسي <span class="requird"></span></label>
 
                                             <div class="fancy-form fancy-form-select">
-                                                <select name="sb_code" class="form-control select2 radius" tabindex="-1" style="display: none;">
+                                                <select name="sb_code" class="form-control select2 radius" tabindex="-1"
+                                                        style="display: none;">
                                                     <option value="" disabled="" selected="">-- حدد --</option>
                                                     <option value="1656">إدارة الأعمال</option>
                                                     <option value="1657">الأقتصاد</option>
@@ -206,16 +191,6 @@
                                     <div class="form-group">
 
                                         <div class="col-md-6 col-sm-6">
-                                            <!-- Phone -->
-                                            <label>رقم الهاتف <span class="requird">*</span></label>
-                                            <label class="input margin-bottom-10">
-                                                <i class="ico-append fa fa-phone"></i>
-                                                <input type="text" name="phone" value="" required="required">
-                                            </label>
-                                            <!-- /Phone -->
-                                        </div>
-
-                                        <div class="col-md-6 col-sm-6">
                                             <!-- Mobile -->
                                             <label>رقم الهاتف الجوال <span class="requird"></span></label>
                                             <label class="input margin-bottom-10">
@@ -224,6 +199,16 @@
                                             </label>
                                             <!-- /Mobile -->
                                         </div>
+                                        <div class="col-md-6 col-sm-6">
+                                            <!-- city -->
+                                            <label>المدينة <span class="requird"></span></label>
+                                            <label class="input margin-bottom-10">
+                                                <i class="ico-append fa fa-map-o"></i>
+                                                <input type="text" name="city" value="">
+                                            </label>
+                                            <!-- /city -->
+                                        </div>
+
                                     </div>
                                 </div>
 
@@ -239,19 +224,6 @@
                                             </label>
                                             <!-- /Fax -->
                                         </div>
-
-                                        <div class="col-md-6 col-sm-6">
-                                            <label> البريد الإلكتروني <span class="requird">*</span></label>
-                                            <label class="input margin-bottom-10">
-                                                <i class="ico-append fa fa-envelope"></i>
-                                                <input type="email" id="email_1" name="email_address" value="" required="required">
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="form-group">
                                         <div class="col-md-6 col-sm-6">
                                             <!-- Zip code -->
                                             <label> الرمز البريدي <span class="requird"></span></label>
@@ -261,30 +233,28 @@
                                             </label>
                                             <!-- /Zip code -->
                                         </div>
+
                                     </div>
                                 </div>
+
 
                                 <div class="row">
                                     <div class="form-group">
 
-                                        <div class="col-md-6 col-sm-6">
-                                            <!-- city -->
-                                            <label>المدينة <span class="requird"></span></label>
-                                            <label class="input margin-bottom-10">
-                                                <i class="ico-append fa fa-map-o"></i>
-                                                <input type="text" name="city" value="">
-                                            </label>
-                                            <!-- /city -->
-                                        </div>
 
                                         <div class="col-md-6 col-sm-6">
                                             <div>
 
 
-                                                <input type="hidden" name="g-recaptcha-response" id="g-recaptcha-response" value="">
+                                                <input type="hidden" name="g-recaptcha-response"
+                                                       id="g-recaptcha-response" value="">
 
                                                 <a class="btn btn-block btn-social btn-primary margin-top-10 margin-right-0 margin-left-0">
-                                                    <i class="fa fa-user-plus"></i> <button id="submit_btn" style="display:block;width:100%" class="margin-0 weight-700" onclick="register()" type="button"> حفظ</button>
+                                                    <i class="fa fa-user-plus"></i>
+                                                    <button id="submit_btn" style="display:block;width:100%"
+                                                            class="margin-0 weight-700" onclick="register()"
+                                                            type="button"> حفظ
+                                                    </button>
                                                 </a>
 
                                             </div>
@@ -296,7 +266,6 @@
 
 
                             </fieldset>
-
 
 
                         </div>
@@ -312,74 +281,51 @@
             </div>
 
 
-
         </section>
 
         <script type="text/javascript">
 
-            document.getElementById('submit_btn').addEventListener('click',function(event){
 
-                var email_1 = document.getElementById('email_1');
-                var email_2 = document.getElementById('email_2');
 
-                if (email_1.value != email_2.value){
-                    email_2.classList.add('err');
-                    email_1.scrollIntoView();
-                    email_2.focus();
 
-                    event.preventDefault();
-                    return false;
-                }
-                return true;
-            });
-
-            document.getElementById('email_2').addEventListener('change',function(){
-
-                var email_1 = document.getElementById('email_1');
-                var email_2 = document.getElementById('email_2');
-
-                if (email_1.value != email_2.value){
-                    email_2.classList.add('err');
-                }
-                else{
-                    email_2.classList.remove('err');
-                }
-            });
-
-            document.getElementById('email_1').addEventListener('change',function(){
-
-                if (this.value.trim() != ''){
-                    this.classList.remove('err');
-                }
-            });
-
-            document.getElementById('username').addEventListener('change',function(){
-
-                if (this.value.trim() != ''){
-                    this.classList.remove('err');
-                }
-            });
 
 
             function register() {
-                var $form = $('#'  + 'Form'),
-                    formData = new FormData(),
-                    params = $form.serializeArray();
+
+                    var $form = $("#signup"),
+                        formData = new FormData(),
+                        params = $form.serializeArray();
+                    $.each(params, function (i, obj) {
+                        formData.append(obj.name, obj.value);
+                    });
+                formData.append('email',$('[name="email_1"]').val());
+
                 formData.append('_token', '{{csrf_token()}}');
-                $.each(params, function (i, obj) {
-                    formData.append(obj.name, obj.value);
-                });
-                $.post("{{url('/register')}}", {_token: '{{csrf_token()}}'}, function(data){
 
-                    if(data.success==false){
-                        showAlertMessage('alert-danger', null, data.message);
+                    $.ajax({
+                        url: $form.attr('action'),
+                        data: formData,
+                        cache: false,
+                        contentType: false,
+                        processData: false,
+                        type: 'POST',
+                        success: function (data) {
+                            if (data.success == true) {
 
-                    }
-                    showAlertMessage('alert-success', null, data.message);
+                                window.location.href = data.url;
+                            }
 
-                    $('.versionTable').click();
-
-                });
+                        },
+                        error: function (data) {
+                            console.log(data);
+                            showAlertMessage('alert-danger', 'Fatal error !', 'An unknown error occured !');
+                        },
+                        statusCode: {
+                            500: function (data) {
+                                console.log(data);
+                            }
+                        }
+                    });
 
             }
 

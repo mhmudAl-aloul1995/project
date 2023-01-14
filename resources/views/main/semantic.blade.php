@@ -7,7 +7,7 @@
 <html> <!--<![endif]-->
 <head>
     <meta charset="utf-8"/>
-    <title>المجلة العلمية للدراسات التجارية والبيئية</title>
+    <title>مجلة جامعة غزة للأبحاث والدراسات</title>
 
     <!-- favicon -->
     <link rel="shortcut icon" type="image/ico" href="https://jces.journals.ekb.eg/data/jces/coversheet/favicon.ico"/>
@@ -18,8 +18,8 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
 
     <!-- user defined metatags -->
-    <meta name="keywords" content="المجلة العلمية للدراسات التجارية والبيئية,JCES"/>
-    <meta name="description" content="المجلة العلمية للدراسات التجارية والبيئية (JCES)"/>
+    <meta name="keywords" content="مجلة جامعة غزة للأبحاث والدراسات,JCES"/>
+    <meta name="description" content="مجلة جامعة غزة للأبحاث والدراسات (JCES)"/>
 
     <!-- WEB FONTS : use %7C instead of | (pipe) -->
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet"
@@ -70,7 +70,7 @@
 <div class="container" id="header">
     <div class="row">
         <div class="col-xs-12 text-center">
-            <img src="https://jces.journals.ekb.eg/data/jces/coversheet/head_ar.jpg" class="img-responsive text-center"
+            <img src="{{url('public/mainCover.jpeg')}}" class="img-responsive text-center"
                  style="display:-webkit-inline-box; width: 100%;">
         </div>
     </div>
@@ -136,7 +136,9 @@
                                     <li class="divider margin-bottom-6 margin-top-6"></li>
                                     <li><a href="{{url('browse_index_researcher')}}">فهرس الباحثين</a></li>
                                     <li class="divider margin-bottom-6 margin-top-6"></li>
+{{--
                                     <li><a href="https://jces.journals.ekb.eg/keyword.index">فهرس الكلمات الرئيسية</a>
+--}}
                                     </li>
                                 </ul>
                             </li>
@@ -144,28 +146,35 @@
                                 <a href="" class="dropdown-toggle" data-toggle="dropdown">معلومات عن الدورية <b
                                         class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="https://jces.journals.ekb.eg/journal/about">عن الدورية</a></li>
+
+                                    <li><a href="{{url('browse_about')}}">عن الدورية</a></li>
                                     <li class="divider margin-bottom-6 margin-top-6"></li>
-                                    <li><a href="https://jces.journals.ekb.eg/journal/aim_scope">الأهداف والنطاق</a>
+                                    <li><a href="{{url('browse_scope')}}">الأهداف والنطاق</a>
                                     </li>
+
                                     <li class="divider margin-bottom-6 margin-top-6"></li>
-                                    <li><a href="https://jces.journals.ekb.eg/journal/editorial.board">هيئة التحرير</a>
+                                    <li><a href="{{url('browse_ethics')}}">أخلاقيات النشر</a>
                                     </li>
-                                    <li class="divider margin-bottom-6 margin-top-6"></li>
-                                    <li><a href="https://jces.journals.ekb.eg/journal/process?ethics">أخلاقيات النشر</a>
-                                    </li>
-                                    <li class="divider margin-bottom-6 margin-top-6"></li>
-                                    <li><a href="https://jces.journals.ekb.eg/journal/process">عملية مراجعة النظراء</a>
-                                    </li>
+
                                 </ul>
                             </li>
-                            <li><a href="https://jces.journals.ekb.eg/journal/authors.note"> دليل المؤلفين</a></li>
-                            <li><a href="https://jces.journals.ekb.eg/author"> ارسال المقالة</a></li>
+                            <li><a href="{{url('browse_authors_nots')}}"> دليل المؤلفين</a></li>
+                            <li><a href="{{url('research')}}"> ارسال المقالة</a></li>
+{{--
                             <li><a href="https://jces.journals.ekb.eg/journal/contact.us"> اتصل بنا</a></li>
+--}}
                         </ul>
                         <ul class="nav navbar-nav navbar-right nomargin">
-                            <li><a href="https://jces.journals.ekb.eg/contacts">تسجيل الدخول</a></li>
-                            <li><a href="{{url('signup')}}"> التسجيل</a></li>
+
+                            @auth
+                                <li><a href="{{url('research')}}">{{Auth::user()->name}}</a></li>
+                                <li><a href="{{url('logout')}}"> تسجيل خروج</a></li>
+                            @endauth()
+                            @guest()
+                                <li><a href="{{url('research')}}">تسجيل الدخول</a></li>
+                                <li><a href="{{url('signup')}}"> التسجيل</a></li>
+                            @endguest
+
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -208,13 +217,13 @@
                     <li id="fli_Edb"><a href="https://jces.journals.ekb.eg/journal/editorial.board">هيئة التحرير</a>
                     </li>
                     <li id="fli_submit"><a href="https://jces.journals.ekb.eg/author"> ارسال المقالة</a></li>
-                    <li id="fli_contactus"><a href="https://jces.journals.ekb.eg/journal/contact.us">اتصل بنا</a></li>
+                   {{-- <li id="fli_contactus"><a href="https://jces.journals.ekb.eg/journal/contact.us">اتصل بنا</a></li>
                     <li id="fli_glossary"><a href="https://jces.journals.ekb.eg/journal/glossary">قاموس المصطلحات
                             التخصصية</a></li>
                     <li id="fli_order_hrdj"><a href="https://jces.journals.ekb.eg/journal/subscription.form">الاشتراك
                             للحصول على نسخة من الدورية</a></li>
                     <li id="fli_sitemap"><a href="https://jces.journals.ekb.eg/sitemap.xml?usr"> خريطة الموقع</a></li>
-                </ul>
+                --}}</ul>
                 <!-- /Links -->
 
             </div>
@@ -289,7 +298,7 @@
 
             <ul class="nomargin list-inline mobile-block">
                 <li>&copy; نظام إدارة المجلات. <span id='sp_crt'>صمم بواسطة <a target='_blank'
-                                                                               href='http://www.notionwave.com/'>نوشن ویو</a></span>
+                                                                               href='http://www.notionwave.com/'> محمود العالول </a></span>
                 </li>
             </ul>
 

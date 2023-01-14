@@ -12,17 +12,19 @@
 
                     <!-- Current Issue -->
                     <div>
+                        @if($type !=0)
 
                         <div class="weight-200 nomargin-top">
-                            <i class="et-layers"></i> <span class="">المجلد والعدد:  <span>المجلد {{$lastVersion->folder->fldr_no}}، العدد {{$lastVersion->vr_no}}، يوليو 2022</span>&nbsp;<a
+                            <i class="et-layers"></i> <span class="">المجلد والعدد:  <span>المجلد {{$lastVersion->folder->fldr_no}}، العدد {{$lastVersion->vr_no}}، يناير 2023 </span>&nbsp;<a
                                     href="./?_action=xml&amp;issue=37369" title="XML" target="_blank"> <i
                                         class="fa fa-file-code-o fa-md" aria-hidden="true"></i></a></span>
                         </div>
+                        @endif
                         <div class="page-header margin-top-3"> عدد المقالات: <span
                                 class="badge badge-light">{{$researches->count()}}</span></div>
 
                         <div class="margin-top-10">
-                            @if($type!=1)
+                            @if($type >1)
                                 <div style=" border-color:  #4295c9;"
                                      class="panel panel-default my_panel-default panel-shadow">
                                     <div style=" background-color:  #4295c9;" class="panel-heading">
@@ -95,20 +97,22 @@
 
                     <!-- Cover -->
                     <div class="item-box nomargin-top">
-                        <a href="javascript:loadModal('المجلة العلمية للدراسات التجارية والبيئية', './data/jces/coversheet/cover_ar.jpg')">
-                            <img src="data/jces/coversheet/cover_ar.jpg" alt="المجلة العلمية للدراسات التجارية والبيئية"
+                        <a href="javascript:loadModal('مجلة جامعة غزة للأبحاث والدراسات', './data/jces/coversheet/cover_ar.jpg')">
+                            <img src="data/jces/coversheet/cover_ar.jpg" alt="مجلة جامعة غزة للأبحاث والدراسات"
                                  style="width: 100%;">
                         </a>
                     </div>
+{{--
                     <div class="margin-top-10">
                         <ul class="list-group list-group-bordered list-group-noicon">
                             <li class="list-group-item"><a
-                                    href="./?_action=press&amp;issue=-1&amp;_is= المقالات الجاهزة للنشر"> المقالات
-                                    الجاهزة للنشر</a></li>
+                                    href="./?_action=press&amp;issue=-1&amp;_is= المقالات "> المقالات
+                                    </a></li>
                             <li class="list-group-item"><a href="./?_action=current&amp;_is= العدد الحالي"> العدد
                                     الحالي</a></li>
                         </ul>
                     </div>
+--}}
                     <div style=" border-color:  #4295c9;" class="panel panel-default my_panel-default ">
                         <div style=" background-color:  #4295c9;" class="panel-heading">
                             <h3 class="panel-title">أرشيف الدورية</h3>

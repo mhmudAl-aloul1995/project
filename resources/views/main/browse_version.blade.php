@@ -33,7 +33,7 @@
 										<span class="inner">
 
 											<!-- lightbox -->
-											<a class="ico-rounded lightbox" href="https://jces.journals.ekb.eg/data/jces/coversheet/cover_ar.jpg"
+											<a class="ico-rounded lightbox" href="{{url('public/logo.jpeg')}}"
                                                data-plugin-options="{&quot;type&quot;:&quot;image&quot;}">
 												<span class="fa fa-search-plus size-18"></span>
 											</a>
@@ -46,7 +46,7 @@
 										</span>
 									</span>
 
-                                            <img class="img-responsive" src="https://jces.journals.ekb.eg/data/jces/coversheet/cover_ar.jpg" alt=""
+                                            <img class="img-responsive" src="{{url('public/logo.jpeg')}}" alt=""
                                                  height="600">
                                         </figure>
 

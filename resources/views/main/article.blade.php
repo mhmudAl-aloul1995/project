@@ -31,7 +31,7 @@
 
                             <ul class="list-inline list-inline-seprator margin-bottom-6 rtl">
                                 <li class="padding-3">
-                                    <a href="{{url('user').'/'.$article->user->id}}">{{$article->user->name}}</a>
+                                    <a href="{{url('browse_users').'/'.$article->user->id}}">{{$article->user->name}}</a>
 
                                 </li>
                             </ul>
@@ -92,7 +92,7 @@
 
                             <ul class="block list-inline list-inline-seprator margin-bottom-6">
                                 <li class="padding-3">
-                                    <a href="{{url('article_category').'/'.$article->category->id}}"> {{$article->category->ctg_name}}     </a>
+                                    <a href="{{url('category').'/1/'.$article->category->id}}"> {{$article->category->ctg_name}}     </a>
                                 </li>
                             </ul>
                         </div>
@@ -115,14 +115,14 @@
                             <div id="pnl_cover">
                                 <div class="row">
                                     <div class="col-xs-6 col-md-6 nomargin-bottom">
-                                        <a href="javascript:loadModal('المجلة العلمية للدراسات التجارية والبيئية', './data/jces/coversheet/cover_ar.jpg')">
-                                            <img src="https://jces.journals.ekb.eg/data/jces/coversheet/cover_ar.jpg"
-                                                 alt="المجلة العلمية للدراسات التجارية والبيئية" style="width: 100%;">
+                                        <a href="javascript:loadModal('مجلة جامعة غزة للأبحاث والدراسات', './data/jces/coversheet/cover_ar.jpg')">
+                                            <img src="{{url('public/logo.jpeg')}}"
+                                                 alt="مجلة جامعة غزة للأبحاث والدراسات" style="width: 100%;">
                                         </a>
                                     </div>
                                     <div class="col-xs-6 col-md-6 nomargin-bottom">
-                                        <h6><a href="./issue_33213_37369.html">المجلد {{$article->version->folder->flr_no}}، العدد {{$article->version->vr_no}} - الرقم المسلسل للعدد
-                                                {{$article->id}}</a><br/>يوليو 2022
+                                        <h6><a href="#">المجلد {{$article->version->folder->flr_no}}، العدد {{$article->version->vr_no}} - الرقم المسلسل للعدد
+                                                {{$article->id}}</a><br/>يناير 2023
 <!--                                            <div id="sp_ar_pages"> الصفحة <span dir="ltr">90-139</span></div>-->
                                         </h6>
                                     </div>
@@ -153,7 +153,88 @@
                             </div>
                         </div>
                     </div>
+                    <div class="panel panel-default my_panel-default  margin-bottom-10">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#ar_info_pnl_share" aria-expanded="true"><i class="fa fa-share-square-o" aria-hidden="true"></i> شارك</a></h3>
+                        </div>
+                        <div id="ar_info_pnl_share" class="panel-collapse collapse in" aria-expanded="true" style="">
+                            <div class="panel-body ar_info_pnl padding-10 text-center">
+                                <a id="share_facebook" href="https://www.facebook.com/sharer.php?u=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-facebook" data-toggle="tooltip" data-placement="top" title="" data-original-title="Facebook">
+                                    <i class="icon-facebook"></i>
+                                    <i class="icon-facebook"></i>
+                                </a>
+                                <a id="share_linkedin" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-linkedin" data-toggle="tooltip" data-placement="top" title="" data-original-title="Linkedin">
+                                    <i class="icon-linkedin"></i>
+                                    <i class="icon-linkedin"></i>
+                                </a>
+                                <a id="share_mendeley" href="https://www.mendeley.com/import/?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-youtube" data-toggle="tooltip" data-placement="top" title="" data-original-title="Mendeley">
+                                    <i class="icon-mendeley"></i>
+                                    <i class="icon-mendeley"></i>
+                                </a>
+                                <a id="share_refworks" href="https://www.refworks.com/express/ExpressImport.asp?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-disqus" data-toggle="tooltip" data-placement="top" title="" data-original-title="Refworks">
+                                    <i class="icon-refworks"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></i>
+                                    <i class="icon-refworks"><span class="path1"></span><span class="path2"></span><span class="path3"></span><span class="path4"></span><span class="path5"></span><span class="path6"></span><span class="path7"></span><span class="path8"></span><span class="path9"></span><span class="path10"></span></i>
+                                </a>
+                                <a id="share_instagram" href="https://www.instagram.com/?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-instagram" data-toggle="tooltip" data-placement="top" title="" data-original-title="Instagram">
+                                    <i class="icon-instagram"></i>
+                                    <i class="icon-instagram"></i>
+                                </a>
+                                <a id="share_twitter" href="https://twitter.com/share?url=https://jces.journals.ekb.eg/article_69158.html&amp;text=استخدام بطاقة الأداء المتوازن في قياس وتقييم الأداء المؤسسي في المنظمات العامة" target="_blank" class="social-icon social-icon-sm  social-twitter" data-toggle="tooltip" data-placement="top" title="" data-original-title="Twitter">
+                                    <i class="icon-twitter"></i>
+                                    <i class="icon-twitter"></i>
+                                </a>
+                                <a id="share_email" href="javascript:act('email')" class="social-icon social-icon-sm  social-email3 " data-toggle="tooltip" data-placement="top" title="" data-original-title="Email">
+                                    <i class="icon-email3"></i>
+                                    <i class="icon-email3"></i>
+                                </a>
+                                <a id="share_print" href="javascript:printDiv('dv_artcl')" class="social-icon social-icon-sm  social-print" data-toggle="tooltip" data-placement="top" title="" data-original-title="Print">
+                                    <i class="icon-print"></i>
+                                    <i class="icon-print"></i>
+                                </a>
+                                <a id="share_stumble" href="https://mix.com/mixit?su=submit&amp;url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-stumbleupon" data-toggle="tooltip" data-placement="top" title="" data-original-title="StumbleUpon">
+                                    <i class="icon-stumbleupon"></i>
+                                    <i class="icon-stumbleupon"></i>
+                                </a>
+                                <a id="share_acedemia" href="https://www.academia.edu/" target="_blank" class="social-icon social-icon-sm  social-academia" data-toggle="tooltip" data-placement="top" title="" data-original-title="Academia">
+                                    <i class="ai ai-academia"></i>
+                                    <i class="ai ai-academia"></i>
+                                </a>
+                                <a id="share_sems" href="https://www.semanticscholar.org/" target="_blank" class="social-icon social-icon-sm  social-forrst" data-toggle="tooltip" data-placement="top" title="" data-original-title="Semantic scholar">
+                                    <i class="ai ai-semantic-scholar"></i>
+                                    <i class="ai ai-semantic-scholar"></i>
+                                </a>
+                                <a id="share_reddit" href="https://www.reddit.com/submit?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-dwolla" data-toggle="tooltip" data-placement="top" title="" data-original-title="Reddit">
+                                    <i class="icon-reddit"></i>
+                                    <i class="icon-reddit"></i>
+                                </a>
+                                <a id="share_rg" href="https://www.researchgate.net/" target="_blank" class="social-icon social-icon-sm  social-researchgate" data-toggle="tooltip" data-placement="top" title="" data-original-title="Research Gate">
+                                    <i class="ai ai-researchgate"></i>
+                                    <i class="ai ai-researchgate"></i>
+                                </a>
+                                <a id="share_blogger" href="https://www.blogger.com/blog-this.g?u=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-blogger" data-toggle="tooltip" data-placement="top" title="" data-original-title="Blogger">
+                                    <i class="icon-blogger"></i>
+                                    <i class="icon-blogger"></i>
+                                </a>
+                                <a id="share_pinterest" href="https://pinterest.com/pin/create/bookmarklet/?media=&amp;url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-pinterest" data-toggle="tooltip" data-placement="top" title="" data-original-title="Pinterest">
+                                    <i class="icon-pinterest"></i>
+                                    <i class="icon-pinterest"></i>
+                                </a>
+                                <a id="share_digg" href="https://www.digg.com/submit?https://jces.journals.ekb.eg/article_69158.html&amp;title=استخدام بطاقة الأداء المتوازن في قياس وتقييم الأداء المؤسسي في المنظمات العامة" target="_blank" class="social-icon social-icon-sm  social-digg" data-toggle="tooltip" data-placement="top" title="" data-original-title="Digg">
+                                    <i class="icon-digg"></i>
+                                    <i class="icon-digg"></i>
+                                </a>
+                                <a id="share_delicious" href="https://del.icio.us/post?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-delicious" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delicious">
+                                    <i class="icon-delicious"></i>
+                                    <i class="icon-delicious"></i>
+                                </a>
+                                <a id="share_skype" href="https://web.skype.com/share?url=https://jces.journals.ekb.eg/article_69158.html" target="_blank" class="social-icon social-icon-sm  social-skype" data-toggle="tooltip" data-placement="top" title="" data-original-title="Skype">
+                                    <i class="icon-skype"></i>
+                                    <i class="icon-skype"></i>
+                                </a>
 
+                            </div>
+                        </div>
+                    </div>
 
 <!--
                     <div class="panel panel-default my_panel-default  margin-bottom-10">

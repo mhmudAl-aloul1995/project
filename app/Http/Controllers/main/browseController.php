@@ -16,6 +16,20 @@ class browseController extends Controller
 {
 
 
+    public function browse_users($id)
+    {
+        $users = User::wherein('role_id', ['2', '3', '4', '5'])->orderBy('role_id', 'asc')->get();
+
+        if ($id > 0) {
+            $users = User::where('id',$id)->get();
+        }
+        $role_id = ['', 'باحث', 'رئيس مجلس ادارة المجلة', ' رئيس التحرير', ' مدير التحرير', ' هيئة التحرير'];
+
+
+        return View::make('main/user', compact('users', 'role_id'));
+
+    }
+
     public function browse_version()
     {
 
@@ -25,11 +39,43 @@ class browseController extends Controller
         return View::make('main/browse_version', compact('folder'));
 
     }
+    public function browse_authors_nots()
+    {
+
+
+
+        return View::make('main/browse_authors_nots');
+
+    }
+    public function browse_scope()
+    {
+
+
+
+        return View::make('main/browse_scope');
+
+    }
+    public function browse_about()
+    {
+
+
+
+        return View::make('main/browse_about');
+
+    }
+    public function browse_ethics()
+    {
+
+
+
+        return View::make('main/browse_about');
+
+    }
 
     public function browse_researcher()
     {
 
-        $chars = array (
+        $chars = array(
             'ا',
             'ب',
             'پ',
@@ -69,10 +115,10 @@ class browseController extends Controller
 
     }
 
-    public function browse_index_researcher($folder_id=null)
+    public function browse_index_researcher($folder_id = null)
     {
 
-        $chars = array (
+        $chars = array(
             'ا',
             'ب',
             'پ',
@@ -109,9 +155,10 @@ class browseController extends Controller
         );
         $folders = Folder::with('versions')->orderBy('fldr_no', 'desc')->get();
 
-        return View::make('main/browse_index_researcher', compact('chars','folders','folder_id'));
+        return View::make('main/browse_index_researcher', compact('chars', 'folders', 'folder_id'));
 
     }
+
     public function browse_category()
     {
 

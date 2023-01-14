@@ -46,6 +46,10 @@ class userController extends Controller
 
 
         return Datatables::of($users)
+            ->editColumn('role_id', function ($ctr) {
+                $role_id = ['', 'باحث', 'رئيس مجلس ادارة المجلة', ' رئيس التحرير', ' مدير التحرير', ' هيئة التحرير'];
+                return $role_id[$ctr->role_id];
+            })
             ->addColumn('action', function ($ctr) {
 
                 return '<div class="btn-group">
@@ -89,18 +93,14 @@ class userController extends Controller
         $user = User::create($data);
 
         if (!$user) {
-            if (!Request::ajax()) {
-                return redirect('signup');
-            }
+
             return response()->json([
                 'success' => FALSE,
                 'message' => "حدث حطأ أثناء الإدخال"
 
             ]);
         }
-        if (!Request::ajax()) {
-            return redirect('research');
-        }
+
         return response()->json([
             'success' => TRUE,
             'message' => "تم الإدخال بنجاح"
@@ -111,6 +111,7 @@ class userController extends Controller
     public function update_user(Request $request)
     {
         $data = $request->all();
+
         $user = user::find($data['id']);
         $user->update($data);
 
@@ -134,6 +135,7 @@ class userController extends Controller
         if (user::find($id)->delete()) {
             return response()->json([
                 'message' => 'تمت العملية بنجاح',
+                'success'=>true
             ]);
         }
 

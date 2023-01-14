@@ -15,11 +15,16 @@ class categoryController extends Controller
 {
 
 
-    public function index($type, $id)
+    public function index(Request $request, $type = null, $id = null)
     {
+
 
         $lastVersion = Version::latest('id')->first();
         $allcategory = Category::withCount('researches')->get();
+        if ($type == 0) {
+            $researches = Research::where(['user_id' => $id])->get();
+            $category = $allcategory;
+        }
         if ($type == 1) {
             $researches = Research::where(['category_id' => $id])->get();
             $category = $allcategory;
@@ -47,6 +52,12 @@ class categoryController extends Controller
                 $q->where('version_id', $id);
             })->withCount('researches')->get();
 
+        }
+        if ($request->has('keywords')) {
+            $search = $request->keywords;
+
+            $researches = Research::where('res_title', 'LIKE', '%' . $search . '%')
+                ->orWhere('res_summary', 'LIKE', '%' . $search . '%')->get();
         }
         $folders_archive = Folder::with('versions')->get();
 
