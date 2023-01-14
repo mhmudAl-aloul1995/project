@@ -31,26 +31,15 @@
                                         <b class="panel-title"><i class="fa fa-file"></i> الموضوعات الرئيسية</b>
                                     </div>
                                     <div class="panel-body">
-                                        @if($category->count()==0)
-                                            @foreach($allcategory as $value)
 
-                                                <div>
-                                                    <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                    <a href="#"
-                                                       class="tag_a">{{$value->ctg_name}}
-                                                        <span class="badge">0</span>
-                                                    </a>
-                                                </div>
-                                            @endforeach
-                                        @endif
 
                                         @foreach($category as $value)
 
                                             <div>
                                                 <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                                <a href="{{url('category').'/1/'.$value->id}}"
+                                                <a href="{{url('searchCategory?category_id='.$value->id.'&version_id='.$lastVersion['id'])}}"
                                                    class="tag_a"> {{$value->ctg_name}}
-                                                    <span class="badge">{{$value->researches_count}}</span>
+                                                    <span class="badge">{{$value->pending_researches_count}}</span>
                                                 </a>
                                             </div>
 
@@ -97,8 +86,8 @@
 
                     <!-- Cover -->
                     <div class="item-box nomargin-top">
-                        <a href="javascript:loadModal('مجلة جامعة غزة للأبحاث والدراسات', './data/jces/coversheet/cover_ar.jpg')">
-                            <img src="data/jces/coversheet/cover_ar.jpg" alt="مجلة جامعة غزة للأبحاث والدراسات"
+                        <a href="javascript:loadModal('مجلة جامعة غزة للأبحاث والدراسات', '{{url('public/logo.jpeg')}}')">
+                            <img src="{{url('public/logo.jpeg')}}" alt="مجلة جامعة غزة للأبحاث والدراسات"
                                  style="width: 100%;">
                         </a>
                     </div>

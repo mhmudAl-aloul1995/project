@@ -10,6 +10,7 @@ Route::get('browse_users/{id}', 'main\browseController@browse_users')->where('id
 Route::get('search', 'main\categoryController@index');
 Route::get('article/{id}', 'main\articleController@index')->where('id', '[0-9]+');
 Route::get('category/{type}/{id}', 'main\categoryController@index')->where(['id' => '[0-9]+', 'type' => '[0-9]+',]);
+Route::get('searchCategory', 'main\categoryController@index')->where(['id' => '[0-9]+', 'type' => '[0-9]+',]);
 Route::get('browse_version', 'main\browseController@browse_version');
 Route::get('browse_researcher', 'main\browseController@browse_researcher');
 Route::get('browse_category', 'main\browseController@browse_category');

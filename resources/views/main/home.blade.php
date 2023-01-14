@@ -167,9 +167,9 @@
                                 @foreach($category as $value)
                                     <div>
                                         <i class="fa fa-file-text-o" aria-hidden="true"></i>
-                                        <a href="{{url('category').'/1/'.$value->id}}"
+                                        <a href="{{url('searchCategory?category_id='.$value->id.'&version_id='.$version_id)}}"
                                            class="tag_a"> {{$value->ctg_name}}
-                                            <span class="badge">{{$value->researches_count}}</span>
+                                            <span class="badge">{{$value->pending_researches_count}}</span>
                                         </a>
                                     </div>
                                 @endforeach

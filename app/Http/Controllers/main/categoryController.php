@@ -10,6 +10,7 @@ use App\Version;
 use View;
 use Yajra\Datatables\Enginges\EloquentEngine;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
 
 class categoryController extends Controller
 {
@@ -47,10 +48,24 @@ class categoryController extends Controller
         }
         if ($type == 3) {
             $researches = Research::where(['version_id' => $id])->get();
+
             $lastVersion = Version::find($id);
-            $category = Category::wherehas('researches', function ($q) use ($id) {
-                $q->where('version_id', $id);
-            })->withCount('researches')->get();
+            $category = Category::withCount([
+                'researches',
+                'researches as pending_researches_count' => function (Builder $query) use($id) {
+                    $query->where('version_id', $id);
+                },
+            ])->get();
+
+
+        }
+        if (isset($request->category_id) && isset($request->version_id)) {
+
+            $version_id=$request->version_id;
+            $category_id=$request->category_id;
+            $researches = Research::where(['category_id'=>$request->category_id,'version_id' => $version_id])->get();
+
+            $lastVersion = Version::find($version_id);
 
         }
         if ($request->has('keywords')) {
