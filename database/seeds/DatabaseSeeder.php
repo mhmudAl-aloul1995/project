@@ -17,16 +17,24 @@ class DatabaseSeeder extends Seeder
 
 
             DB::table('users')->insert(
-                ['name' => 'admin', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin@admin',],
+                ['role_id'=>1,'name' => 'admin', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin@admin',],
 
 
             );
             DB::table('users')->insert(
-                ['name' => 'د حسن أبو جراد', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin1@admin',],
+                ['role_id'=>2,'name' => 'حسن أبو جراد', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin1@admin',],
 
             );
             DB::table('users')->insert(
-                ['name' => 'د سهام أبو العمرين', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin2@admin',]
+                ['role_id'=>3,'name' => 'سهام أبو العمرين', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin2@admin',]
+
+            );
+            DB::table('users')->insert(
+                ['role_id'=>4,'name' => 'طارق أبو حجير', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin3@admin',]
+
+            );
+            DB::table('users')->insert(
+                ['role_id'=>5,'name' => 'يوسف حمدونة', 'password' => '$2y$10$fA8uqm0zXkD8w.vCmP.Qhenbtkx2b/7CjYjIhzPwn.vT4/cG/gEbG', 'email' => 'admin5@admin',]
 
             );
 
