@@ -6,6 +6,7 @@ use App\AllocationDonor;
 use App\research;
 use App\Category;
 use App\Journal;
+use App\Researcher;
 use App\user;
 use App\Donor;
 use App\Municipality;
@@ -30,9 +31,9 @@ class researchController extends Controller
 
 
         $category = Category::all();
-        $users = Category::all();
+        $user = User::where('id', '!=', 1)->get();
 
-        return View::make('research', compact('category', 'users'));
+        return View::make('research', compact('category', 'user'));
 
     }
 
@@ -76,7 +77,8 @@ class researchController extends Controller
     public function show(Request $request, $id)
     {
 
-        $research = Research::find($id);
+        $research = Research::with('researchers')->where('id', $id)->first();
+
         if ($research) {
             return response()->json([
                 'research' => $research
@@ -89,7 +91,6 @@ class researchController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-
 
         unset($data['id']);
         $data['user_id'] = Auth::id();
@@ -117,7 +118,14 @@ class researchController extends Controller
 
         }
 
+
         $data['version_id'] = $get_last_version;
+  /*      if ($data['keywords']) {
+            $data['keywords'] = explode('-',$data['keywords']);
+
+            $data['keywords']= json_encode($data['keywords']);
+
+        }*/
         $research = Research::create($data);
 
         if (!$research) {
@@ -127,6 +135,12 @@ class researchController extends Controller
                 'message' => "حدث حطأ أثناء الإدخال"
 
             ]);
+        }
+        if ($data['researchers']) {
+
+            foreach ($data['researchers'] as $value) {
+                Researcher::create(['user_id' => $value, 'research_id' => $research->id]);
+            }
         }
         return response()->json([
             'success' => TRUE,
@@ -167,6 +181,14 @@ class researchController extends Controller
 
             ]);
         }
+        if ($data['researchers']) {
+            Researcher::where('research_id', $research->id)->delete();
+
+            foreach ($data['researchers'] as $value) {
+                Researcher::create(['user_id' => $value, 'research_id' => $research->id]);
+            }
+
+        }
         return response()->json([
             'success' => TRUE,
             'message' => "تم التعديل بنجاح"
@@ -176,6 +198,7 @@ class researchController extends Controller
     public function destroy(Request $request, $id)
     {
 
+        $researchers = Researcher::where('research_id',$id)->delete();
 
         $research = Research::find($id)->delete();
         if ($research) {

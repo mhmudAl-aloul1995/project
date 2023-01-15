@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Doctrine\DBAL\Driver\IBMDB2\DB2Driver;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -12,13 +13,16 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $res_title
  * @property string $res_summary
  * @property string $res_link
+ * @property string $page_from
+ * @property string $page_to
+ * @property string $keywords
  * @property string $created_at
  * @property string $updated_at
  * @property string $deleted_at
  * @property Category $category
  * @property User $user
  * @property Version $version
- * @property Keyword[] $keywords
+ * @property Researcher[] $researchers
  */
 class Research extends Model
 {
@@ -32,7 +36,25 @@ class Research extends Model
     /**
      * @var array
      */
-    protected $fillable = ['category_id', 'version_id', 'user_id', 'res_title', 'res_summary', 'res_link', 'created_at', 'updated_at', 'deleted_at'];
+    protected $fillable = ['category_id', 'version_id', 'user_id', 'res_title', 'res_summary', 'res_link', 'page_from', 'page_to', 'keywords', 'created_at', 'updated_at', 'deleted_at'];
+
+    public function setkeywordsAttribute($value)
+    {
+
+
+        return $this->attributes['keywords'] = json_encode(explode('-', $value));
+
+    }
+
+    public function getkeywordsAttribute($value)
+    {
+        if ($value==null){
+            return null;
+        }
+
+          return  $this->attributes['keywords'] = implode('-', json_decode($value));
+
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -58,11 +80,13 @@ class Research extends Model
         return $this->belongsTo('App\Version');
     }
 
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function keywords()
+    public function researchers()
     {
-        return $this->hasMany('App\Keyword');
+        return $this->hasMany('App\Researcher');
     }
 }

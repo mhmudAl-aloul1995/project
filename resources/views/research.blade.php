@@ -58,6 +58,33 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
+                                        <div   class="col-md-12">
+                                            <div  class="form-group form-md-line-input">
+                                                <label for="researchers" class="col-md-2  control-label">المؤلفون
+
+                                                </label>
+                                                <div   class="col-md-4">
+                                                    <select multiple  required
+                                                            data-placeholder="المؤلفون"
+                                                            name="researchers[]"
+                                                            class="form-control select2  ">
+
+                                                        @foreach ($user as $value)
+                                                            <option value="{{ $value->id }}">{{ $value->name }}</option>
+
+                                                        @endforeach
+
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="col-md-12">
                                             <div class="form-group form-md-line-input">
                                                 <label for="res_title" class="col-md-2  control-label">عنوان البحث
@@ -94,11 +121,63 @@
                                     <div class="col-md-12">
                                         <div class="col-md-12">
                                             <div class="form-group form-md-line-input">
+                                                <label for="res_title" class="col-md-2  control-label">الكلمات المفتاحية
+                                                </label>
+                                                <div class="col-md-10">
+                                                    <input required="" type="text" name="keywords" value=""
+                                                           class="form-control" placeholder="الكلمات المفتاحية">
+                                                    </input>
+                                                    <div class="form-control-focus"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-md-line-input">
                                                 <label for="res_link" class="col-md-2  control-label"> البحث كامل
                                                 </label>
                                                 <div class="col-md-10">
                                                     <input required="" type="file" name="res_link" value=""
                                                            class="form-control" placeholder="البحث كامل">
+                                                    </input>
+                                                    <div class="form-control-focus"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-md-line-input">
+                                                <label for="page_from" class="col-md-2  control-label"> الصفحة من
+                                                </label>
+                                                <div class="col-md-3">
+                                                    <input required="" type="number" name="page_from" value=""
+                                                           class="form-control" placeholder="الصفحة من">
+                                                    </input>
+                                                    <div class="form-control-focus"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="col-md-12">
+                                            <div class="form-group form-md-line-input">
+                                                <label for="page_to" class="col-md-2  control-label"> الصفحة إلى
+                                                </label>
+                                                <div class="col-md-3">
+                                                    <input required="" type="number" name="page_to" value=""
+                                                           class="form-control" placeholder="الصفحة إلى">
                                                     </input>
                                                     <div class="form-control-focus"></div>
                                                 </div>
@@ -213,7 +292,11 @@
                             <thead>
                             <tr>
                                 <th>عنوان البحث</th>
+                                <th> الكلمات المفتاحية</th>
+                                <th> الصفحة من</th>
+                                <th> الصفحة إلى</th>
                                 <th>البحث كامل</th>
+
                                 <th> إجراء</th>
 
                             </tr>
@@ -268,6 +351,9 @@
                 {className: 'text-center', data: 'category.ctg_name', name: 'category.ctg_name', searchable: true},
 */
                 {className: 'text-center', data: 'res_title', name: 'res_title', searchable: true},
+                {className: 'text-center', data: 'keywords', name: 'keywords', searchable: true},
+                {className: 'text-center', data: 'page_from', name: 'page_from', searchable: true},
+                {className: 'text-center', data: 'page_to', name: 'page_to', searchable: true},
                 {className: 'text-center', data: 'res_link', name: 'res_link', searchable: true},
                 {className: 'text-left', data: 'action', name: 'action', searchable: false},
             ],

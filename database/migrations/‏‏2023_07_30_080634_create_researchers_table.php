@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateKeywordsTable extends Migration
+class CreateResearchersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateKeywordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('keywords', function (Blueprint $table) {
+        Schema::create('researchers', function (Blueprint $table) {
             $table->bigIncrements('id');
 
             $table->unsignedBigInteger('research_id');
             $table->foreign('research_id')->references('id')->on('researches');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->string('res_summary');
-            $table->string('res_link');
+
             $table->timestamps();
             $table->softDeletes();
 

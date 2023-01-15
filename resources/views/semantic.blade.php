@@ -260,7 +260,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!-- BEGIN LOGO -->
         <div class="page-logo">
             <a href="{{url('bill')}}">
-                <img src="{{url('')}}/assets/layouts/layout2/img/logo-default.png" alt="logo" class="logo-default"/>
+                <img src="{{url('')}}/public/logo.jpeg" alt="logo" width="100" height="20" class="logo-default"/>
             </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -1163,15 +1163,21 @@ License: You must have a valid license purchased only from themeforest(the above
 
                 $.get("{{url('')}}/" + formName + '/' + id, {}, function (data) {
                     if (data) {
+
                         $('#' + formName + 'Form').attr('action', "{{url('')}}/update_" + formName);
 
 
                         var selects = $('#' + formName + 'Form').find('select').serializeArray();
                         var inputs = $('#' + formName + 'Form').find('input,textarea').serializeArray();
+                        var inputs = $('#' + formName + 'Form').find('input,textarea').serializeArray();
+
+
 
                         $.each(selects, function (i, field) {
                             var fieldName = field.name
+
                             $('#' + formName + 'Form').find('[name="' + fieldName + '"]').val(data[formName][fieldName]).trigger('change');
+
                         });
                         $.each(inputs, function (i, field) {
 
@@ -1183,6 +1189,15 @@ License: You must have a valid license purchased only from themeforest(the above
                         });
                         if(formName=="research") {
                             $('#' + formName + 'Form').bootstrapValidator('enableFieldValidators', 'res_link', false);
+                            var user_ids= [];
+
+                            $.each(data[formName]['researchers'], function (i, field) {
+                                user_ids.push(field.user_id);
+
+                            });
+                            console.log(user_ids)
+                            $('#' + formName + 'Form').find('[name="researchers[]"]').val(user_ids).trigger('change');
+
                         }
                         $('#' + formName + 'Modal').modal('show', {backdrop: 'static'});
                     }

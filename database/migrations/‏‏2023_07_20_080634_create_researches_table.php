@@ -1,4 +1,4 @@
-    <?php
+<?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,6 +27,9 @@ class CreateResearchesTable extends Migration
             $table->longText('res_title');
             $table->longText('res_summary');
             $table->longText('res_link');
+            $table->string('page_from');
+            $table->string('page_to');
+            $table->longText('keywords');
             $table->timestamps();
             $table->softDeletes();
 
